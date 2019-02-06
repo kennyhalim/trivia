@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-3.3.1.js"></script>
     <script src="js/scripts.js"></script>
-    <script src="js/contentPresentation.js"></script>
     <title>Who? What? When? Where? Why?</title>
   </head>
   <body>
@@ -38,23 +37,39 @@
           Hint: Turkey
         </div>
         <div id="question-image">
-          <img src="img/thermalSprings.jpg" alt="A photo of Hot Springs">
+
         </div>
         <div id="question-answers" class="container">
 
-            <input id="answer:1:1" type="radio" name="answer" value=""> Thermal Springs</input><br/>
-            <input id="answer:1:2" type="radio" name="answer" value=""> Daimond Fork Springs</input><br/>
-            <input id="answer:1:3" type="radio" name="answer" value=""> Travertine Springs</input><br/>
-            <input id="answer:1:4" type="radio" name="answer" value=""> Terme di Saturnia Springs</input><br/>
-        </div>
-        <div id="question-button">
-          <button class="btn btn-success" type="button" name="button">Next ></button>
+            <input id="answer:1:1" type="radio" name="answer" value=""> <span id="box1"></span></input><br/>
+            <input id="answer:1:2" type="radio" name="answer" value=""> <span id="box2"></span></input><br/>
+            <input id="answer:1:3" type="radio" name="answer" value=""> <span id="box3"></span></input><br/>
+            <input id="answer:1:4" type="radio" name="answer" value=""> <span id="box4"></span></input><br/>
         </div>
       </div>
-      <div id="container-results">
+      <div id="checkButton">
+        <button class="btn btn-success" type="button" name="button">Check Answer</button>
+      </div>
+      <div id="question-button">
+        <button class="btn btn-success" type="button" name="button">Next ></button>
+      </div>
+
+      <!-- <div id="teamA">
+        A
+      </div>
+      <div id="teamB">
+        B
+      </div> -->
+
+      <div id="score">
+        Congratulation Team  <span></span>! You answered <span id="numberOfCorrectAnswer">...</span><span id=""> out of 20 correctly!</span>
+        <div class="">
+          <img src="img/thumb-up-smiley.png" alt="">
+        </div>
+      </div>
+
+      <!-- <div id="container-results">
         <div class="container">
-
-
         <div class="result-image">
           <img src="img/thermalSprings.jpg" alt=""> Correct
         </div>
@@ -121,7 +136,7 @@
         <div id="container-score">
           You answered 18 out of 20 correctly
         </div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

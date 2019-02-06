@@ -80,7 +80,7 @@ html, body {
   padding: 5px;
 }
 
-#question-button {
+#question-button, #checkButton {
   position: relative;
   z-index: 101;
   padding: 15px;
@@ -104,6 +104,21 @@ html, body {
   z-index: 100;
   position: relative;
 }
+
+#score, #teamA, #teamB {
+  color: white;
+
+  font-size: 18pt;
+  margin-top: 30px;
+  text-align: center;
+  padding: 25px;
+}
+
+#score img {
+  height: 150px;
+  padding: 15px;
+}
+
 
 .result-image {
   padding: 10px;
