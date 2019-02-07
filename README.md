@@ -14,7 +14,7 @@
 |      |       |         |          |
 | :-------- | :-------- | :--------------    | :------------  |
 
-
+open -a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --args --allow-file-access-from-files
 ## Technologies Used
 * _HTML_
 * _CSS(Bootstrap)_

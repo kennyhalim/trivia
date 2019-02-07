@@ -1,11 +1,9 @@
-function ContentPresentation(triviaGame) {
-  this.triviaGame = triviaGame;
+function ContentPresentation() {
+
 }
 
 ContentPresentation.prototype.showMainPage = function() {
   var content = this;
-  var trivia = this.triviaGame;
-
   $("#container-question").hide();
   $("#container-results").hide();
   $("#container-welcome").show();
@@ -15,7 +13,7 @@ ContentPresentation.prototype.showMainPage = function() {
     console.log(category);
     // alert(category);
     //get current question then show the questions on the question page
-    content.showQuestionPage(content, triviaQuestion.length, category);
+    content.showQuestionPage(null, 1, category);
   });
 }
 
@@ -24,15 +22,14 @@ ContentPresentation.prototype.showQuestionPage = function(questions, index, cate
   //the question object is assume to have a unique id and an array of answers.
   //each answer is assumed to have a unique id
   var content = this;
-  var trivia = this.triviaGame;
   var questionCount = 20;
   var questionNumber = index + 1;
   var questionText = "This is question " + questionNumber;
   var questionTitle = `Question (${questionNumber} of ${questionCount}): ${questionText}?`;
-  var questionHint = `Hint: ${question.hint}`;
-  var answers = [question.answerOne, question.answerTwo, question.answerThree, question.answerFour];
+  var questionHint = `Hint: This is hint`;
+  var answers = ["Thermal Springs", "Diamond Fork Springs", "Travertine Springs", "Terme di Saturnia Springs"];
   var answerHtml = "";
-  var questionImage = question.imageURL;
+  var questionImage = "img/thermalSprings.jpg";
 
   for (var i = 0; i < answers.length; i++) {
     var answer = answers[i];

@@ -36,7 +36,7 @@ html, body {
   font-size: 13pt;
   font-weight: bold;
   text-align: left;
-  width: 16%;
+  width: 24%;
   border-radius: 5px;
   padding: 15px;
   color: #ddd;
@@ -75,12 +75,12 @@ html, body {
   background-image: linear-gradient(90deg,rgba(220, 220, 220, 0.6), rgba(220, 220, 220, 0.6));
   z-index: 101;
   position: relative;
-  width: 55%;
+  width: 320px;
   border-radius: 5px;
   padding: 5px;
 }
 
-#question-button, #checkButton {
+#question-button {
   position: relative;
   z-index: 101;
   padding: 15px;
@@ -91,34 +91,22 @@ html, body {
   width: 85px;
 }
 
-#question-image {
-  height: 390px;
-
+#container-question {
+  display: none;
 }
 
 #question-image img {
-  height: 500px;
-  border: 1px solid black;
-  border-radius: 5px;
-  -webkit-box-shadow: 10px 10px 7px #222222;
-  z-index: 100;
-  position: relative;
+  height: 250px;
+  width: 350px;
 }
 
-#score, #teamA, #teamB {
-  color: white;
+#result {
+  display: none;
+}
 
-  font-size: 18pt;
-  margin-top: 30px;
+#hintContainer {
   text-align: center;
-  padding: 25px;
 }
-
-#score img {
-  height: 150px;
-  padding: 15px;
-}
-
 
 .result-image {
   padding: 10px;

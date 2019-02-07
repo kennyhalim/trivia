@@ -18,6 +18,8 @@ TriviaGame.prototype.getTriviaQuestion = function(questionType) {
   }
   if (triviaQuestionSet.length == 0) {
     alert("gameover");
+    $("#result").show();
+    $("#container-question").hide();
   }
   var questionNumber = Math.floor(Math.random() * triviaQuestionSet.length);
   return triviaQuestionSet[questionNumber];
@@ -82,54 +84,103 @@ function processData(allText) {
   }
 }
 
-function playGame(category) {
-  $(".question").text(trackNumber);
+function timer(){
+  var timeleft = 30;
+  var downloadTimer = setInterval(function(){
+  timeleft--;
+  document.getElementById("countdown").innerHTML = "Timer : " + timeleft;
+    if(timeleft <= 0){
+      clearInterval(downloadTimer);
+      document.getElementById("countdown").innerHTML = "Your time is up";
+      $("#question-button button").show();
+      $("#checkButton button").hide();
+    }
+  }, 1000);
+}
 
+function playGame(category) {
+  if(trackNumber < 20){
+  $(".question").text("Question " + trackNumber);
+} else if (trackNumber = 20){
+  trackNumber = 20;
+  $(".question").text("Question " + trackNumber);
+}
   currentQuestion = triviaGame.getTriviaQuestion(category);
-  $("#question-hint").text(currentQuestion.hint);
-  $("#question-image").html("<img src=" + currentQuestion.imageURL +">");
   //console.log(currentQuestion);
   if(currentQuestion){
+    timer();
+    $("input:radio[name=answer]").prop('checked',false);
+    $("#question-hint").text(currentQuestion.hint);
+    $("#question-image").html("<img src=" + currentQuestion.imageURL +">");
     triviaGame.setQuestionUsed(currentQuestion.questionId);
+    $("#box1").text(currentQuestion.answerOne);
+    $("#box2").text(currentQuestion.answerTwo);
+    $("#box3").text(currentQuestion.answerThree);
+    $("#box4").text(currentQuestion.answerFour);
+    trackNumber += 1;
   }
-
-  $("#box1").text(currentQuestion.answerOne);
-  $("#box2").text(currentQuestion.answerTwo);
-  $("#box3").text(currentQuestion.answerThree);
-  $("#box4").text(currentQuestion.answerFour);
-  trackNumber += 1;
 }
 
 function checkAnswer(answer){
   if(answer == currentQuestion.correctAnswer){
-    alert("correct");
+    alert("You Answered Correctly!");
     score += 500;
     trackCorrect += 1;
     $("#score").text(score);
-    $("#numOfCorrectAnswer").text(trackCorrect)
+    $("#numOfCorrectAnswer").text(trackCorrect);
   } else {
-    alert("wrong");
-    $("#numOfCorrectAnswer").text()
+    var answer;
+    if (currentQuestion.correctAnswer === "1") {
+      answer = currentQuestion.answerOne;
+    } else if (currentQuestion.correctAnswer === "2"){
+      answer = currentQuestion.answerTwo;
+    } else if (currentQuestion.correctAnswer === "3"){
+      answer = currentQuestion.answerThree;
+    } else if (currentQuestion.correctAnswer === "4"){
+      answer = currentQuestion.answerFour;
+    }
+    alert('Incorrect! The Correct Answer is "' + answer + '".');
   }
 }
 
 $(document).ready(function() {
-  //attachContactListeners();
   loadQuestions();
-  // var triviaQuestion = new TriviaQuestion("1","img/thermalSprings.jpg","where","Turkey","Pamukkale","Diamond Fork Springs","Travertine Springs","Terme di Saturnia Springs","1");
-  // triviaGame.addTriviaQuestion(triviaQuestion);
-  // var triviaQuestion2 = new TriviaQuestion("2","img/thermalSprings.jpg","where","Turkey","Test","Test Springs","Test Springs","Test di Saturnia Springs","1");
-  // triviaGame.addTriviaQuestion(triviaQuestion2);
-
   $("#category-button button").click(function() {
     //get category the user selected
     category = $("#category-selection input[name='category']:checked").val();
-    playGame(category);
+    if(category){
+      playGame(category);
+      $("#checkButton button").show();
+      $("#question-button button").hide();
+      $("#container-welcome").hide();
+      $("#container-question").show();
+    } else {
+      alert("please select a category");
+    }
   })
 
-  $("#checkButton").click(function() {
+  $("#checkButton button").click(function() {
     checkedAnswer = $("#question-answers input[name='answer']:checked").val();
-    console.log(checkedAnswer);
+    if(checkedAnswer){
     checkAnswer(checkedAnswer);
+    $("#checkButton button").hide();
+    $("#question-button button").show();
+  } else {
+    alert("Please choose an answer");
+  }
   })
+
+  $("#question-button button").click(function(){
+    playGame(category);
+    $("#checkButton button").show();
+    $("#question-button button").hide();
+  });
+
+  $("#mainMenu").click(function(){
+    location.reload();
+  });
+
+  $("#showHint").click(function(){
+    alert(currentQuestion.hint);
+  });
 });
