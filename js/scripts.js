@@ -128,11 +128,8 @@ function playGame(category) {
 }
 
 function checkAnswer(answer){
-  var confirmationImage = $("#answer-confirmation img");
-
   if(answer == currentQuestion.correctAnswer){
     $("#answer-confirmation img").attr("src", "img/checkmark.png");
-    //alert("You Answered Correctly!");
     score += 500;
     trackCorrect += 1;
     $("#score").text("Your score: " + score);
@@ -155,10 +152,6 @@ function checkAnswer(answer){
   }
 
   $("#answer-confirmation").show();
-}
-
-function showScore() {
-
 }
 
 $(document).ready(function() {
