@@ -1,3 +1,4 @@
+Image URL,Question Type,Hint,Answer One,Answer Two,Answer Three,Answer Four,Correct Answer
 img/who/who1.jpg,who,Also wrote The Side of Paradise,J.K. Rowling,J.D. Salinger,Dr. Seuss,F-Scott-Fritzgerald,4
 img/who/who2.jpg,who,Sounds like salad,Lee salinmanju,J.K. Rowling,J.D. Salinger,F-Scott-Fritzgerald,3
 img/who/who3.jpg,who,Also creator of Bambi and Mary Poppins,Matt Groening,Dan Harmon,Walt Disney,Hayou Miyazaki,3
@@ -58,6 +59,7 @@ img/what/south-america.png,what,Order,Chile and Eduador,"Argentina, Paraguay","B
 img/what/toad-lily.jpg,what,Japan,Miltonia,Epidendrum,Cypripedium orchid,Toad Lily,4
 img/what/trowel.jpg,what,Spackling tool,Trowel,Wood planer,Spade,Mattlock,1
 img/what/Vintage Winter Olympics.jpg,what,, France (1924),England (1924),Amsterdam (1924),Berlin (1924),1
+img/why/leapday.jpeg,why,Length of Day,Leap Day makes up for clocks slowing down,Leap Day exists to give us a day off,Leap Day makes up the day not being exactly 24 hours,Leap Day makes us exercise,3
 img/why/bluesky.jpeg,why,Wavelengths,The sky is blue because the air turns blue at low pressure,The sky is blue because blue is scattered more strongly than red,The sky is blue because the earth's ceiling is painted blue,The sky is blue because of pollution,2
 img/why/brownpoop.jpeg,why,Stomach juice,Poop is brown because of bile,Poop is brown because of dead blood cells,Poop is brown because undigested food is brown,1,
 img/why/yawn.jpeg,why,Air,We yawn because we're tired,We yawn to stretch our mouth muscles,We yawn because we're bored,We yawn to get more oxygen,4
