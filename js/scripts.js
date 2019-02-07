@@ -86,9 +86,13 @@ function processData(allText) {
 
 function timer(){
   var timeleft = 30;
+  //document.getElementById("countdown").innerHTML = "Timer : " + timeleft;
+  console.log(timeleft);
+
   var downloadTimer = setInterval(function(){
   timeleft--;
   document.getElementById("countdown").innerHTML = "Timer : " + timeleft;
+  console.log(timeleft);
     if(timeleft <= 0){
       clearInterval(downloadTimer);
       document.getElementById("countdown").innerHTML = "Your time is up";
@@ -100,13 +104,13 @@ function timer(){
 
 function playGame(category) {
   if(trackNumber < 20){
-  $(".question").text("Question " + trackNumber);
+  $("#question").text("Question " + trackNumber);
 } else if (trackNumber = 20){
   trackNumber = 20;
-  $(".question").text("Question " + trackNumber);
+  $("#question").text("Question " + trackNumber);
 }
   currentQuestion = triviaGame.getTriviaQuestion(category);
-  //console.log(currentQuestion);
+  console.log(currentQuestion);
   if(currentQuestion){
     timer();
     $("input:radio[name=answer]").prop('checked',false);
@@ -122,8 +126,11 @@ function playGame(category) {
 }
 
 function checkAnswer(answer){
+  var confirmationImage = $("#answer-confirmation img");
+
   if(answer == currentQuestion.correctAnswer){
-    alert("You Answered Correctly!");
+    $("#answer-confirmation img").attr("src", "img/checkmark.png");
+    //alert("You Answered Correctly!");
     score += 500;
     trackCorrect += 1;
     $("#score").text(score);
@@ -139,20 +146,33 @@ function checkAnswer(answer){
     } else if (currentQuestion.correctAnswer === "4"){
       answer = currentQuestion.answerFour;
     }
-    alert('Incorrect! The Correct Answer is "' + answer + '".');
+    $("#answer-confirmation img").attr("src", "img/xmark.png");
+    //alert('Incorrect! The Correct Answer is "' + answer + '".');
   }
+
+  $("#answer-confirmation").show();
+}
+
+function showScore() {
+
 }
 
 $(document).ready(function() {
+
   loadQuestions();
+
   $("#category-button button").click(function() {
     //get category the user selected
     category = $("#category-selection input[name='category']:checked").val();
+    categoryText = $("#category-selection input[name='category']:checked").parent().text();
     if(category){
       playGame(category);
+      $("#question-category").text(categoryText);
       $("#checkButton button").show();
       $("#question-button button").hide();
       $("#container-welcome").hide();
+      $("#project-description").hide();
+      $("#answer-confirmation").hide();
       $("#container-question").show();
     } else {
       alert("please select a category");
@@ -174,6 +194,7 @@ $(document).ready(function() {
     playGame(category);
     $("#checkButton button").show();
     $("#question-button button").hide();
+    $("#answer-confirmation").hide();
   });
 
   $("#mainMenu").click(function(){
