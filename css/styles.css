@@ -2,6 +2,7 @@ html, body {
   background-image: url("../img/background.png");
   height: 100%;
   background-size: auto;
+  font-family: 'Rubik', sans-serif;
 }
 
 .project-title {
@@ -29,21 +30,21 @@ html, body {
 }
 
 #container-welcome {
-  margin-top: 70px;
+  margin-top: 40px;
+  text-align: center;
 }
 
 #category-selection {
   font-size: 13pt;
   font-weight: bold;
+  margin: 0 auto;
+  width: auto;
   text-align: left;
-  width: 24%;
-  border-radius: 5px;
-  padding: 15px;
-  color: #ddd;
+  display: table;
 }
 
 #category-button {
-  padding: 15px;
+  padding-right:25px;
   font-size: 11pt;
 }
 
@@ -89,6 +90,10 @@ html, body {
 #question-button button {
   font-size: 11pt;
   width: 85px;
+}
+
+#correctAnswer {
+  font-size: 16px;
 }
 
 #container-question {

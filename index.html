@@ -5,23 +5,25 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
     <title>Who? What? When? Where? Why?</title>
   </head>
   <body>
     <div class="container-content">
       <div id="project-description">
         <div class="project-title">Who? What? When? Where? Why?</div>
-        <p>This is based on a well-known child's game. The game will be played by two teams consisting of one to four players. An image will be displayed along with a question that could be "What is It?" or "Who is It?" or "When Did this Happen?", etc., along with four possible answers. The team whose turn is up selects the answer they believe is correct. If they guess right, the team score is increased by 1 point. If they're wrong, the score is decreased by 1 point.</p>
+        <p>This is based on a well-known child's game. An image will be displayed along with a question that could be "What is It?" or "Who is It?" or "When Did this Happen?", etc., along with four possible answers. Player will be prompted to select a category. Each category has 20 questions where player earns 500 points for each correct answer. Total points and number of correct answer will be displayed after player finish the category.</p>
       </div>
       <div id="container-welcome">
         <div class="user-instruction">Select a category below to test your knowledge...or search skills :)</div>
+        <br>
         <div id="category-selection" class="container">
-          <label><input type="radio" name="category" value="who">Who is it?</label><br>
-          <label><input type="radio" name="category" value="who">What is it?</label><br>
+          <label><input type="radio" name="category" value="who"> Who is it?</label><br>
+          <label><input type="radio" name="category" value="who"> What is it?</label><br>
           <label><input type="radio" name="category" value="when"> When was it?</label><br>
           <label><input type="radio" name="category" value="where"> Where is it?</label><br>
           <label><input type="radio" name="category" value="why"> Why?</label>
-        </div>
+        </div><br>
         <div id="category-button">
           <button class="btn btn-success" type="button" name="button">Play</button>
         </div>
@@ -41,6 +43,10 @@
 
         <div id="countdown">
 
+        </div>
+
+        <div id="hintCounter">
+          
         </div>
 
         <div id="question-image">
@@ -65,6 +71,7 @@
             </div>
         </div>
         <br>
+        <div id="correctAnswer"></div><br>
         <div id="checkButton">
           <button class="btn btn-success" type="button" name="button">Check Answer</button>
         </div>
@@ -74,19 +81,11 @@
       </div>
 
 
-      <!-- <div id="teamA">
-        A
-      </div>
-      <div id="teamB">
-        B
-      </div> -->
-
       <div id="result">
         Congratulation! You answered <span id="numOfCorrectAnswer">0</span><span> out of 20 correctly!</span>
-        <!-- <div class="">
-          //<img src="img/thumb-up-smiley.png" alt="">
-        </div> -->
-        <br><br>
+
+        <!-- <img src="img/thumb-up-smiley.png" alt=""> -->
+        <br>
         <button id="mainMenu" type="button" class="btn btn-info">Main Menu</button>
       </div>
 

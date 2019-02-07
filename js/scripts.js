@@ -17,7 +17,6 @@ TriviaGame.prototype.getTriviaQuestion = function(questionType) {
     }
   }
   if (triviaQuestionSet.length == 0) {
-    alert("gameover");
     $("#result").show();
     $("#container-question").hide();
   }
@@ -60,6 +59,7 @@ var category;
 var trackNumber = 1;
 var score = 0;
 var trackCorrect = 0;
+var countHint = 5;
 
 function loadQuestions() {
   $.ajax({
@@ -84,15 +84,14 @@ function processData(allText) {
   }
 }
 
+var downloadTimer;
+
 function timer(){
   var timeleft = 30;
-  //document.getElementById("countdown").innerHTML = "Timer : " + timeleft;
-  console.log(timeleft);
-
-  var downloadTimer = setInterval(function(){
+  downloadTimer = setInterval(function(){
   timeleft--;
+
   document.getElementById("countdown").innerHTML = "Timer : " + timeleft;
-  console.log(timeleft);
     if(timeleft <= 0){
       clearInterval(downloadTimer);
       document.getElementById("countdown").innerHTML = "Your time is up";
@@ -100,6 +99,10 @@ function timer(){
       $("#checkButton button").hide();
     }
   }, 1000);
+}
+
+function stopTimer(){
+  clearInterval(downloadTimer);
 }
 
 function playGame(category) {
@@ -110,9 +113,8 @@ function playGame(category) {
   $("#question").text("Question " + trackNumber);
 }
   currentQuestion = triviaGame.getTriviaQuestion(category);
-  console.log(currentQuestion);
+
   if(currentQuestion){
-    timer();
     $("input:radio[name=answer]").prop('checked',false);
     $("#question-hint").text(currentQuestion.hint);
     $("#question-image").html("<img src=" + currentQuestion.imageURL +">");
@@ -133,7 +135,7 @@ function checkAnswer(answer){
     //alert("You Answered Correctly!");
     score += 500;
     trackCorrect += 1;
-    $("#score").text(score);
+    $("#score").text("Your score: " + score);
     $("#numOfCorrectAnswer").text(trackCorrect);
   } else {
     var answer;
@@ -146,8 +148,9 @@ function checkAnswer(answer){
     } else if (currentQuestion.correctAnswer === "4"){
       answer = currentQuestion.answerFour;
     }
+    $("#correctAnswer").html("The correct answer is: <br>" + answer);
     $("#answer-confirmation img").attr("src", "img/xmark.png");
-    //alert('Incorrect! The Correct Answer is "' + answer + '".');
+
   }
 
   $("#answer-confirmation").show();
@@ -167,6 +170,7 @@ $(document).ready(function() {
     categoryText = $("#category-selection input[name='category']:checked").parent().text();
     if(category){
       playGame(category);
+      timer();
       $("#question-category").text(categoryText);
       $("#checkButton button").show();
       $("#question-button button").hide();
@@ -174,14 +178,17 @@ $(document).ready(function() {
       $("#project-description").hide();
       $("#answer-confirmation").hide();
       $("#container-question").show();
+      $("#hintCounter").text("Hint left: " + countHint);
+      $("#score").text("Your score: " + score);
     } else {
-      alert("please select a category");
+      alert("Please select a category");
     }
   })
 
   $("#checkButton button").click(function() {
     checkedAnswer = $("#question-answers input[name='answer']:checked").val();
     if(checkedAnswer){
+    stopTimer();
     checkAnswer(checkedAnswer);
     $("#checkButton button").hide();
     $("#question-button button").show();
@@ -192,6 +199,7 @@ $(document).ready(function() {
 
   $("#question-button button").click(function(){
     playGame(category);
+    timer();
     $("#checkButton button").show();
     $("#question-button button").hide();
     $("#answer-confirmation").hide();
@@ -201,7 +209,13 @@ $(document).ready(function() {
     location.reload();
   });
 
+
   $("#showHint").click(function(){
+    if (countHint == 1) {
+      $("#showHint").hide();
+    }
+    countHint--;
     alert(currentQuestion.hint);
+    $("#hintCounter").text("Hint left: " + countHint);
   });
 });
