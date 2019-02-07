@@ -14,11 +14,6 @@ _**Theary Im: thearyim@gmail.com**_
 **_This is based on a well-known child's game. An image will be displayed along with a question that could be "What is It?" or "Who is It?" or "When Did this Happen?", etc., along with four possible answers. Player will be prompted to select a category. Each category has 20 questions where player earns 500 points for each correct answer. Total points and number of correct answer will be displayed after player finish the category._**
 
 
-
-|   who   |   what    |    when     |     where     |   why    |
-| :-------- | :-------- | :--------------    | :------------  |
-|  20 questions | 20 questions | 20 questions | 20 questions | 20 questions |
-
 ## Instructions
 open -a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --args --allow-file-access-from-files
 ## Technologies Used
