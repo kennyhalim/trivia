@@ -149,6 +149,7 @@ function checkAnswer(answer){
       answer = currentQuestion.answerFour;
     }
     $("#correctAnswer").html("The correct answer is: <br>" + answer);
+    $("#correctAnswer").show();
     $("#answer-confirmation img").attr("src", "img/xmark.png");
 
   }
@@ -203,6 +204,7 @@ $(document).ready(function() {
     $("#checkButton button").show();
     $("#question-button button").hide();
     $("#answer-confirmation").hide();
+    $("#correctAnswer").hide();
   });
 
   $("#mainMenu").click(function(){
